@@ -74,7 +74,7 @@ void dcsc(std::map<int, int> &valid)
 
 int main()
 {
-    freopen("input.txt", "r", stdin);
+    freopen("data/wiki-Vote.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
     
     std::map<int, int> valid;
@@ -103,9 +103,14 @@ int main()
 	for (int i = 0; i < SCC.size(); i++)
 	{
 		for (int j: SCC[i])
+        {
+            g.scc[j] = i;
 			std::cout << j << " ";
+        }
 		std::cout << "\n";
 	}
+
+    // g.visualize();
 
     return 0;
 }

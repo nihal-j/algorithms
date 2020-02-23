@@ -31,7 +31,7 @@ void dfs_kosarju(int i, int flag, Graph &g)
 
 int main()
 {
-    freopen("input.txt", "r", stdin);
+    freopen("data/wiki-Vote.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
     
     int v, e;
@@ -75,9 +75,13 @@ int main()
     for (int i = 0; i < components.size(); i++)
     {
         for (int j = 0; j < components[i].size(); j++)
+        {
+            g.scc[components[i][j]] = i;
             std::cout << components[i][j] << " ";
+        }
         std::cout << "\n";
     }
-    
+
+    g.visualize();
     return 0;
 }
