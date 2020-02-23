@@ -4,7 +4,7 @@ Graph::Graph(int x, int y)
 {
     vCount = x;
     eCount = y;
-    edges.resize((int)1e5);
+    edges.clear();
 }
 
 void Graph::insert_edge(int src, int dest)

@@ -6,34 +6,33 @@
 
 #include "graph.h"
 
-int visited[(int)1e5];
 std::vector<int> order;
+
 std::vector<int> component;
 std::vector<std::vector<int>> components;
 
-void dfs_finish_order(Graph* g, int i)
-{
-    visited[i] = 1;
-    std::vector<int> edges = g -> get_outgoing_edges(i);
-    for (int j = 0; j < edges.size(); j++)
-        if (!visited[edges[j]])
-            dfs_finish_order(g, edges[j]);
-    order.push_back(i);
-}
+std::stack<int> s;
+std::map<int, int> visited;
 
-void dfsT(Graph* gT, int i)
+void dfs_kosarju(int i, int flag, Graph &g)
 {
     visited[i] = 1;
-    component.push_back(i);
-    std::vector<int> edgesT = gT -> get_outgoing_edges(i);
-    for (int j = 0; j < edgesT.size(); j++)
-        if (!visited[edgesT[j]])
-            dfsT(gT, edgesT[j]);
+    if (flag)
+        component.push_back(i);
+
+    std::vector<int> e = g.get_outgoing_edges(i);
+    for (int j = 0; j < e.size(); j++)
+        if (visited.find(e[j]) == visited.end())
+            dfs_kosarju(e[j], flag, g);
+
+    if (!flag)
+        s.push(i);
 }
 
 int main()
 {
     freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
     
     int v, e;
     std::cin >> v >> e;
@@ -46,23 +45,30 @@ int main()
         std::cin >> a >> b;
         g.insert_edge(a, b);
         gT.insert_edge(b, a);
+        g.vertex.insert(a);
+        g.vertex.insert(b);
+        gT.vertex.insert(a);
+        gT.vertex.insert(b);
     }
 
-    memset(visited, 0, sizeof visited);
-    for (int i = 1; i <= v; i++)
-        if (!visited[i])
-            dfs_finish_order(&g, i);
-    
-    std::reverse(order.begin(), order.end());
-    memset(visited, 0, sizeof visited);
-    for (int i = 0; i < order.size(); i++)
+    for (auto i: g.vertex)
+        if (visited.find(i) == visited.end())
+            dfs_kosarju(i, 0, g);
+
+    visited.clear();
+    g = gT;
+
+    int cnt = 0;
+    while (!s.empty())
     {
-        if (!visited[order[i]])
+        if (visited.find(s.top()) == visited.end())
         {
-            dfsT(&gT, order[i]);
+            visited[s.top()] = 1;
+            dfs_kosarju(s.top(), 1, g);
             components.push_back(component);
             component.clear();
         }
+        s.pop();
     }
 
     std::cout << components.size() << "\n";
@@ -71,8 +77,7 @@ int main()
         for (int j = 0; j < components[i].size(); j++)
             std::cout << components[i][j] << " ";
         std::cout << "\n";
-        
     }
-
+    
     return 0;
 }
