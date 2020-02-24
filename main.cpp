@@ -3,6 +3,7 @@
 #include <stack>
 #include <string.h>
 #include <vector>
+#include <fstream>
 
 #include "graph.h"
 
@@ -29,10 +30,12 @@ void dfs_kosarju(int i, int flag, Graph &g)
         s.push(i);
 }
 
-int main()
+int main(int argc, char* argv[])
 {
-    freopen("data/wiki-Vote.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
+    freopen(argv[1], "r", stdin);
+    std::ofstream file;
+    file.open("output.txt");
+    // freopen("output.txt", "w", stdout);
     
     int v, e;
     std::cin >> v >> e;
@@ -56,7 +59,6 @@ int main()
             dfs_kosarju(i, 0, g);
 
     visited.clear();
-    g = gT;
 
     int cnt = 0;
     while (!s.empty())
@@ -64,22 +66,25 @@ int main()
         if (visited.find(s.top()) == visited.end())
         {
             visited[s.top()] = 1;
-            dfs_kosarju(s.top(), 1, g);
+            dfs_kosarju(s.top(), 1, gT);
             components.push_back(component);
             component.clear();
         }
         s.pop();
     }
 
+    // std::cout << argv[1] << " ";
+    // std::cout << v << " " << e << " ";
+    std::cout << "SCC count: ";
     std::cout << components.size() << "\n";
     for (int i = 0; i < components.size(); i++)
     {
         for (int j = 0; j < components[i].size(); j++)
         {
             g.scc[components[i][j]] = i;
-            std::cout << components[i][j] << " ";
+            file << components[i][j] << " ";
         }
-        std::cout << "\n";
+        file << "\n";
     }
 
     g.visualize();

@@ -74,7 +74,7 @@ void dcsc(std::map<int, int> &valid)
 
 int main()
 {
-    freopen("data/wiki-Vote.txt", "r", stdin);
+    freopen("data/input2.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
     
     std::map<int, int> valid;

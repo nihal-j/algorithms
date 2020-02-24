@@ -9,8 +9,6 @@
 #include <iostream>
 #include <fstream>
 
-#include "visualize.h"
-
 class Graph 
 { 
     public:
