@@ -72,10 +72,10 @@ void dcsc(std::map<int, int> &valid)
 	dcsc(validR);
 }
 
-int main()
+int main(int argc, char* argv[])
 {
-    freopen("data/input2.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
+    freopen(argv[1], "r", stdin);
+    // freopen("output.txt", "w", stdout);
     
     std::map<int, int> valid;
     int v, e;

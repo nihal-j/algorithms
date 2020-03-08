@@ -35,7 +35,6 @@ int main(int argc, char* argv[])
     freopen(argv[1], "r", stdin);
     std::ofstream file;
     file.open("output.txt");
-    // freopen("output.txt", "w", stdout);
     
     int v, e;
     std::cin >> v >> e;
@@ -72,9 +71,7 @@ int main(int argc, char* argv[])
         }
         s.pop();
     }
-
-    // std::cout << argv[1] << " ";
-    // std::cout << v << " " << e << " ";
+    
     std::cout << "SCC count: ";
     std::cout << components.size() << "\n";
     for (int i = 0; i < components.size(); i++)
