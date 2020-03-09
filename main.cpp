@@ -23,8 +23,8 @@ int main(int argc, char* argv[])
         g.vertices.insert(a), g.vertices.insert(b);
     }
 
-    std::vector<std::vector<int>> components = kosaraju.get_scc(g, gT);
-    // std::vector<std::vector<int>> components = dcsc.get_scc(g, gT);
+    // std::vector<std::vector<int>> components = kosaraju.get_scc(g, gT);
+    std::vector<std::vector<int>> components = dcsc.get_scc(g, gT);
     std::cout << "Number of SCC: ";
     std::cout << components.size() << "\n";
 
