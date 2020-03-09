@@ -8,6 +8,7 @@
 #include <set>
 #include <iostream>
 #include <fstream>
+#define int long long
 
 class Graph 
 { 
