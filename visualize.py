@@ -1,6 +1,7 @@
 import networkx as nx
 import random
 import matplotlib.pyplot as plt
+import sys
 
 G = nx.DiGraph()
 
@@ -37,5 +38,5 @@ edges,color = zip(*nx.get_edge_attributes(G,'color').items())
 nodes,ncolor = zip(*nx.get_node_attributes(G,'color').items())
 plt.figure(figsize=(20,10))
 nx.draw_networkx(G, edge_list=edges, edge_color=color, node_color=ncolor)
-plt.savefig("img/graph.png") # save as png
+plt.savefig("img/" + sys.argv[1]) # save as png
 plt.show()

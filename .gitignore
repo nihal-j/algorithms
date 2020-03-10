@@ -1,3 +1,5 @@
+*.html
+generator
 op_kos.txt
 op_dcsc.txt
 main
