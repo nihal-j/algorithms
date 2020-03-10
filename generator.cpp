@@ -1,7 +1,19 @@
+/**
+ * @file generator.cpp
+ * @brief Generator program for generating random graphs.
+ */
+
 #include <iostream>
 #include <fstream>
 
-double edge_exists()
+/**
+ * @brief Utility function to get a decision value based on probability = 0.1.
+ * 1 is returned with a probability 0.1, 0 otherwise.
+ * 
+ * @return int 0 or 1 as described above.
+ */
+
+int edge_exists()
 {
     double prob = (double)std::rand() / RAND_MAX;
     if (prob <= 0.1)

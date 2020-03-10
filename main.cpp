@@ -1,6 +1,8 @@
 #include "DCSC.h"
 #include "kosaraju.h"
 
+/// driver function
+
 int main(int argc, char* argv[])
 {
     freopen(argv[1], "r", stdin);
@@ -23,11 +25,15 @@ int main(int argc, char* argv[])
         g.vertices.insert(a), g.vertices.insert(b);
     }
 
+    /*
+     * Pick one of the following two ways of generating strongly connected components 
+     */
+
     // std::vector<std::vector<int>> components = kosaraju.get_scc(g, gT);
     std::vector<std::vector<int>> components = dcsc.get_scc(g, gT);
+
     std::cout << "Number of SCC: ";
     std::cout << components.size() << "\n";
-
 
     for (int i = 0; i < components.size(); i++)
         std::sort(components[i].begin(), components[i].end());
@@ -43,6 +49,11 @@ int main(int argc, char* argv[])
         file << "\n";
     }
 
+    /*
+     * Uncomment the following line to enable generation of files 
+     * to support visualiztion.
+     */
     // g.visualize();
+
     return 0;
 }
