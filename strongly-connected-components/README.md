@@ -51,6 +51,10 @@ File: input6.txt|
 :-|
 <img src = "img/input6.png">$n = 50$<br>$m = 228$|
 
+File: complete.txt|
+:-|
+<img src = "img/complete.png">$n = 10$<br>$m = 100$|
+
 File: wiki-Vote.txt|
 :-|
 <img src = "img/wiki-Vote.png">$n = 7115$<br>$m = 103689$|
@@ -95,7 +99,7 @@ input6.txt|50|228|3|3,408 kB|0.0s
 wiki-Vote.txt|7,115|103,689|5,816|10,560 kB|0.59s
 slashdot.txt| 82,168|948,464| 10,559|75,668 kB|5.69s
 twitter.txt |81,306| 2,420,766| 12,248|102,172 kB|8.92s
-pokec.txt|1,632,803|30,622,564|325,892||6776.12s
+pokec.txt|1,632,803|30,622,564|325,892|1,629,440 kB|7,046.61s
 
 Observations
 ---
