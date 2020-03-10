@@ -1,3 +1,9 @@
+/**
+ * @file main.cpp
+ * @brief Main driver file to invoke the two implemented algorithms.
+ * 
+ */
+
 #include "DCSC.h"
 #include "kosaraju.h"
 
