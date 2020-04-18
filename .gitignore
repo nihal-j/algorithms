@@ -1,3 +1,5 @@
+network-flow/*.pdf
+network-flow/tmp
 *.cpp:tests
 *.out
 *.pdf
