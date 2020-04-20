@@ -1,3 +1,7 @@
+/**
+ * @file main.cpp
+ * @brief driver file for maximum bipartite matching using Ford Fulkerson algorithm
+ */
 #include <iostream>
 #include "fordfulkerson.hpp"
 
@@ -41,15 +45,18 @@ int main(int argc, char* argv[])
 		handle.residual[nd][handle.t] = 1;
     }
 
+    // calculating max flow in the modified graph
     handle.calculate_flows();
+    std::cout << "Maximum number of matchings (value of max flow): ";
     std::cout << handle.get_max_flow() << "\n";
-    std::cout << handle.get_min_st_cut() << "\n";
 
-    // for (auto &i: handle.flow[handle.s])
-    // {
-    //     std::cout << i.first << ": ";
-    //     for (auto &j: handle.flow[i.first])
-    //         std::cout << j.first - l << " ";
-    //     std::cout << "\n";
-    // }
+    // printing the matchings found in the flow network
+    std::cout << "Matchings: \n";
+    for (auto &i: handle.flow[handle.s])
+    {
+        std::cout << i.first << ": ";
+        for (auto &j: handle.flow[i.first])
+            std::cout << j.first - l << " ";
+        std::cout << "\n";
+    }
 }

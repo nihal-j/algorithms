@@ -1,5 +1,12 @@
 #include "fordfulkerson.hpp"
 
+/**
+ * @note
+ * Graphs are represented using adjacency list
+ * graph[i] is the adjacency list of vertex i
+ * graph[i][j] is the value of capacity of the edge between vertex i and vertex j
+ */
+
 int FordFulkerson::dfs(int i, std::vector<int> &visited, std::vector<int>& parent)
 {
 	visited[i] = 1;
@@ -34,10 +41,6 @@ void FordFulkerson::calculate_flows()
 
 		for (int nd = t; nd != s; nd = parent[nd])
 			bottleneck = std::min(bottleneck, residual[parent[nd]][nd]);
-
-		// for (int nd = t; nd != s; nd = parent[nd])
-		// 	std::cout << nd << " ";
-		// std::cout << "\n";
 
 		for (int nd = t; nd != s; nd = parent[nd])
 		{
@@ -104,12 +107,10 @@ int FordFulkerson::get_min_st_cut()
 
 	int mincut = 0;
 
-	// for (int nd: a)
-	// 	std::cout << nd << " ";
-	// std::cout << "\n";
-	// for (int nd: b)
-	// 	std::cout << nd << " ";
-	// std::cout << "\n";
+	for (int nd: a)
+		S.insert(nd);
+	for (int nd: b)
+		T.insert(nd);
 
 	for (int nd: a)
 	{
