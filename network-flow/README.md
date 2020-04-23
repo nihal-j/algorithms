@@ -66,4 +66,4 @@ File|Left v (n1)|Right v (n2)|Edges (m)|Max match|Memory usage|Execution time
 ----|----|---|---|---|---|---|
 smallbp1.txt|5|5|8|5|3,252 KB | 0.0 s
 bp1.txt|829|551|1,476|451|4,140 KB | 0.13 s
-bp2.txt|16,726|22,015|58,595|451|4,140 KB | 0.13 s
+bp2.txt|16,726|22,015|58,595|12,652|26,772 KB | 194.095 s

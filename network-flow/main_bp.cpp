@@ -2,6 +2,7 @@
  * @file main.cpp
  * @brief driver file for maximum bipartite matching using Ford Fulkerson algorithm
  */
+#include <chrono>
 #include <iostream>
 #include "fordfulkerson.hpp"
 
@@ -45,10 +46,17 @@ int main(int argc, char* argv[])
 		handle.residual[nd][handle.t] = 1;
     }
 
+    // auto start = std::chrono::high_resolution_clock::now();
+
     // calculating max flow in the modified graph
     handle.calculate_flows();
     std::cout << "Maximum number of matchings (value of max flow): ";
     std::cout << handle.get_max_flow() << "\n";
+
+    // auto end = std::chrono::high_resolution_clock::now();
+    // double duration=std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    // duration *= 1e-9;
+    // std::cout << "Time taken = " << duration << "s\n";
 
     // printing the matchings found in the flow network
     std::cout << "Matchings: \n";
