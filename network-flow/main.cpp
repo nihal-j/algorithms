@@ -23,9 +23,8 @@ int main(int argc, char* argv[])
 		handle.graph[a][b] = c;
 		handle.residual[a][b] = c;
 	}
-
+    
     handle.calculate_flows();
-
     // value of the max flow
     std::cout << "Value of max flow: ";
     std::cout << handle.get_max_flow() << "\n";
